@@ -31,6 +31,8 @@ namespace PixelBuilder.Components
             this.textureHover = textureHover;
         }
 
+        public event EventHandler OnClick;
+
         protected override void drawSelf(Graphics GRAPH)
         {
             switch(buttonState)
@@ -51,11 +53,14 @@ namespace PixelBuilder.Components
 
 
 
+
         public override bool onMouseDown()
         {
             if (buttonState == CurrentState.Down) return false;
 
             buttonState = CurrentState.Down;
+
+            if (OnClick != null) Task.Run(delegate() { OnClick.Invoke(this, null); });
 
             return true;
         }

@@ -24,10 +24,12 @@ namespace XOXClient
             List<PixelComponent> components = new List<PixelComponent>()
             {
                 new PixelButtonComponent("btn1", new Point(1,1), Resources.button, Resources.buttonDown, Resources.buttonHover),
-                new PixelButtonComponent("btn2", new Point(1,12), Resources.button, Resources.buttonDown, Resources.buttonHover),
+                new PixelButtonComponent("btn2", new Point(1,15), Resources.button, Resources.buttonDown, Resources.buttonHover),
             };
 
-            form = new PixelForm(new Size(50, 60), 10, Color.Blue, components.ToArray());
+            (components[0] as PixelButtonComponent).OnClick += btn_OnClick;
+
+            form = new PixelForm(new Size(50, 60), 10, Color.FromArgb(0,188,212), components.ToArray());
 
             form.OnRedraw += Form_OnRedraw;
 
@@ -38,6 +40,11 @@ namespace XOXClient
 
             form.TriggerMouseMove(new Point(10,10));
             form.TriggerMouseMove(new Point(150,150));
+        }
+
+        private void btn_OnClick(object sender, EventArgs e)
+        {
+            MessageBox.Show(this,"AD");
         }
 
         private void Form_OnRedraw(object sender, EventArgs e)
