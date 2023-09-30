@@ -43,7 +43,7 @@ namespace PixelBuilder.TextureUtils
                 g.DrawImage(img, new Rectangle(new Point(0, 0), textureSize), new Rectangle(location, textureSize), GraphicsUnit.Pixel);
             }
 
-            return texture.Expand(10);
+            return texture;
         }
     }
 }

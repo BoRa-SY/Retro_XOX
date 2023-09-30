@@ -23,9 +23,11 @@ namespace XOXClient
         {
             InitializeComponent();
 
+            var btn = new PixelButtonComponent("btn1", new Point(1, 1), Resources.button, Resources.buttonDown, Resources.buttonHover);
+            btn.OnClick += Btn_OnClick;
             PixelComponent[] comps = new PixelComponent[]
             {
-                new PixelButtonComponent("btn1", new Point(1,1), Resources.button, Resources.buttonDown, Resources.buttonHover),
+                btn,
                 new PixelButtonComponent("btn2", new Point(1,12), Resources.button, Resources.buttonDown, Resources.buttonHover)
             };
 
@@ -35,17 +37,11 @@ namespace XOXClient
             form.OnRedraw += Form_OnRedraw;
 
             Form_OnRedraw(null, null);
+        }
 
+        private void Btn_OnClick(object sender, EventArgs e)
+        {
 
-
-            tf.getTextureByIndex(0);
-            tf.getTextureByIndex(1);
-            tf.getTextureByIndex(2);
-            tf.getTextureByIndex(3);
-            tf.getTextureByIndex(4);
-            tf.getTextureByIndex(5);
-            tf.getTextureByIndex(6);
-            tf.getTextureByIndex(7);
         }
 
         private void Form_OnRedraw(object sender, EventArgs e)
@@ -70,12 +66,10 @@ namespace XOXClient
             form.TriggerMouseMove(e.Location);
         }
 
-        int index = 0;
-        TextureFile tf = new TextureFile((Bitmap)Bitmap.FromFile(@"D:\texture.png"), 4, new Size(10, 10));
-
         private void button1_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = tf.getTextureByIndex(index++);
+            var a = form["btn1"];
+            a.Visible = !a.Visible;
         }
     }
 }

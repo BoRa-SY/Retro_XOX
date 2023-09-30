@@ -11,10 +11,20 @@ namespace PixelBuilder.Abs
     public abstract class PixelComponent
     {
         public PixelForm ParentForm { get; private set; }
-        public bool Visible { get; protected set; } = true;
         public Point Location { get; protected set; }
         public Size Size { get; protected set; }
         public string Name { get; protected set; }
+
+        private bool _visible = true;
+        public bool Visible
+        {
+            get { return _visible; }
+            set
+            {
+                _visible = value;
+                ParentForm.Redraw();
+            }
+        }
 
 
         public void DrawSelf(Graphics GRAPH)

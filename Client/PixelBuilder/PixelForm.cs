@@ -55,7 +55,7 @@ namespace PixelBuilder
 
 
 
-        private void Redraw()
+        internal void Redraw()
         {
             Bitmap newBitmap = new Bitmap(formSize.Width, formSize.Height);
 
@@ -84,7 +84,7 @@ namespace PixelBuilder
             for (int i = 0; i < Components.Length; i++)
             {
                 PixelComponent comp = Components[i];
-                if (comp.isInBounds(cellP)) return comp;
+                if (comp.isInBounds(cellP) && (comp.Visible)) return comp;
             }
 
             return null;
