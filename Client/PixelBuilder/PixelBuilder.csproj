@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="Abs\PixelComponent.cs" />
     <Compile Include="Components\PixelButtonComponent.cs" />
+    <Compile Include="Components\PixelImageComponent.cs" />
     <Compile Include="Components\PixelTextInputComponent.cs" />
+    <Compile Include="Components\PixelXOXGridComponent.cs" />
     <Compile Include="PixelForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextureUtils\TextureFile.cs" />

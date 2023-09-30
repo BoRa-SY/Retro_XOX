@@ -1,6 +1,6 @@
 ﻿namespace XOXClient
 {
-    partial class FormMain
+    partial class FormTest
     {
         /// <summary>
         /// Required designer variable.
@@ -46,7 +46,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(518, 12);
+            this.button1.Location = new System.Drawing.Point(534, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -54,15 +54,17 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // FormMain
+            // FormTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1101, 761);
+            this.ClientSize = new System.Drawing.Size(632, 629);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "FormMain";
+            this.KeyPreview = true;
+            this.Name = "FormTest";
             this.Text = "FormMain";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormTest_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

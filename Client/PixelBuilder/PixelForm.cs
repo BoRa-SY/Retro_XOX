@@ -76,6 +76,7 @@ namespace PixelBuilder
 
 
             if (OnRedraw != null) OnRedraw.Invoke(this, null);
+
         }
 
 
