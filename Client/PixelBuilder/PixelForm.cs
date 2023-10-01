@@ -57,6 +57,7 @@ namespace PixelBuilder
 
         internal void Redraw()
         {
+
             Bitmap newBitmap = new Bitmap(formSize.Width, formSize.Height);
 
             using (Graphics GRAPH = Graphics.FromImage(newBitmap))

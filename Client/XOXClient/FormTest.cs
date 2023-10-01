@@ -31,12 +31,10 @@ namespace XOXClient
 
             PixelComponent[] comps = new PixelComponent[]
             {
-                new PixelButtonComponent("btn1", new Point(1, 1), Resources.button, Resources.buttonDown, Resources.buttonHover),
-                new PixelButtonComponent("btn2", new Point(1,12), Resources.button, Resources.buttonDown, Resources.buttonHover),
-                inpComp
+                new PixelXOXGridComponent("xox", new Point(1,1), Resources.X, Resources.O, Color.White)
             };
 
-            form = new PixelForm(new Size(50,60), 10, Color.Red, comps);
+            form = new PixelForm(new Size(50,60), 10, Color.FromArgb(0,188,212), comps);
             form.OnRedraw += Form_OnRedraw;
 
             Form_OnRedraw(null, null);
@@ -98,7 +96,7 @@ namespace XOXClient
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void FormTest_KeyPress(object sender, KeyPressEventArgs e)

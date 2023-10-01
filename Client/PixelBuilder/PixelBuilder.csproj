@@ -54,6 +54,7 @@
     <Compile Include="TextureUtils\TextureFile.cs" />
     <Compile Include="Utils\BitmapExtensions.cs" />
     <Compile Include="Utils\PointConverter.cs" />
+    <Compile Include="Utils\PointExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
