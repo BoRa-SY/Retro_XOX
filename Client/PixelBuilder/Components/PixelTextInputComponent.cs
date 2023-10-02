@@ -85,10 +85,17 @@ namespace PixelBuilder.Components
         {
             if(underline)
             {
+                for (int i = 0; i < (Text.Length == 6 ? 6 : Text.Length + 1); i++)
+                {
+                    drawUnderline(i);
+                }
+
+                /*
                 for(int i = 0; i < textLength; i++)
                 {
                     drawUnderline(i);
                 }
+                */
             }
 
             for(int i = 0; i < Text.Length; i++)

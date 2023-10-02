@@ -20,6 +20,8 @@ namespace PixelBuilder.Components
 
         private Pen gridPen;
 
+        public event EventHandler<int> OnCellClicked;
+
         public PixelXOXGridComponent(string name, Point location, Bitmap Ximg, Bitmap Oimg, Color gridColor)
         {
             if (Ximg.Size != Oimg.Size) throw new ArgumentException("X and O images must have the same size");
@@ -128,6 +130,17 @@ namespace PixelBuilder.Components
 
         }
 
+        public override bool onMouseDown(Point p)
+        {
+            for(int i = 0; i < cells.Length; i++)
+            {
+                Point cellStart = cellLocations[i];
+            }
+
+
+
+            return false;
+        }
 
         private void setAllCells(CellState state)
         {

@@ -39,22 +39,22 @@ namespace PixelBuilder.Abs
 
         protected abstract void drawSelf(Graphics GRAPH);
 
-        public virtual bool onMouseDown()
+        public virtual bool onMouseDown(Point p)
         {
             return false;
         }
 
-        public virtual bool onMouseUp()
+        public virtual bool onMouseUp(Point p)
         {
             return false;
         }
 
-        public virtual bool onMouseEnter()
+        public virtual bool onMouseEnter(Point p)
         {
             return false;
         }
 
-        public virtual bool onMouseLeave()
+        public virtual bool onMouseLeave(Point p)
         {
             return false;
         }

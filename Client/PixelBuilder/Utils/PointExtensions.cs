@@ -18,5 +18,15 @@ namespace PixelBuilder.Utils
         {
             return new Point(p1.X + X, p1.Y + Y);
         }
+
+        public static Point Subtract(this Point p1, Point p2)
+        {
+            return new Point(p1.X - p2.X, p1.Y - p2.Y);
+        }
+
+        public static Point Subtract(this Point p1, int X, int Y)
+        {
+            return new Point(p1.X - X, p1.Y - Y);
+        }
     }
 }

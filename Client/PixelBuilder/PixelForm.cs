@@ -4,6 +4,7 @@ using PixelBuilder.Utils;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Drawing;
@@ -102,15 +103,15 @@ namespace PixelBuilder
         {
             Point cellPoint = PointConverter.getCellPointFromPixelPoint(location, sizeMultiplier, sizeMultiplier);
 
-            PixelComponent comp = getComponentByCellPoint(cellPoint);
+            PixelComponent component = getComponentByCellPoint(cellPoint);
 
-            if (comp == currentHoveringComponent)
+            if (component == currentHoveringComponent)
             {
                 return;
             }
-            else if (comp == null)
+            else if (component == null)
             {
-                bool redrawRequired = currentHoveringComponent.onMouseLeave();
+                bool redrawRequired = currentHoveringComponent.onMouseLeave(location.Subtract(component.Location));
                 if (redrawRequired) Redraw();
 
                 currentHoveringComponent = null;
@@ -119,10 +120,10 @@ namespace PixelBuilder
             {
                 bool redrawRequired = false;
                 if (currentHoveringComponent != null)
-                    redrawRequired = currentHoveringComponent.onMouseLeave() ? true : redrawRequired;
+                    redrawRequired = currentHoveringComponent.onMouseLeave(location.Subtract(component.Location)) ? true : redrawRequired;
 
-                currentHoveringComponent = comp;
-                redrawRequired = comp.onMouseEnter() ? true : redrawRequired;
+                currentHoveringComponent = component;
+                redrawRequired = component.onMouseEnter(location.Subtract(component.Location)) ? true : redrawRequired;
 
                 if (redrawRequired) Redraw();
             }
@@ -136,7 +137,7 @@ namespace PixelBuilder
 
             if (component == null) return;
 
-            bool redrawRequired = component.onMouseDown();
+            bool redrawRequired = component.onMouseDown(location.Subtract(component.Location));
 
             if (redrawRequired) Redraw();
         }
@@ -149,7 +150,7 @@ namespace PixelBuilder
 
             if (component == null) return;
 
-            bool redrawRequired = component.onMouseUp();
+            bool redrawRequired = component.onMouseUp(location.Subtract(component.Location));
 
             if (redrawRequired) Redraw();
 

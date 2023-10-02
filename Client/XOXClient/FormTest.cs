@@ -31,7 +31,8 @@ namespace XOXClient
 
             PixelComponent[] comps = new PixelComponent[]
             {
-                new PixelXOXGridComponent("xox", new Point(1,1), Resources.X, Resources.O, Color.White)
+                new PixelXOXGridComponent("xox", new Point(1,1), Resources.X, Resources.O, Color.White),
+                inpComp
             };
 
             form = new PixelForm(new Size(50,60), 10, Color.FromArgb(0,188,212), comps);

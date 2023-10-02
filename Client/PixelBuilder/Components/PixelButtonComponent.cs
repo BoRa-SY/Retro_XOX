@@ -54,7 +54,7 @@ namespace PixelBuilder.Components
 
 
 
-        public override bool onMouseDown()
+        public override bool onMouseDown(Point p)
         {
             if (buttonState == CurrentState.Down) return false;
 
@@ -65,7 +65,7 @@ namespace PixelBuilder.Components
             return true;
         }
 
-        public override bool onMouseUp()
+        public override bool onMouseUp(Point p)
         {
             if (buttonState == CurrentState.Up) return false;
 
@@ -74,7 +74,7 @@ namespace PixelBuilder.Components
             return true;
         }
 
-        public override bool onMouseEnter()
+        public override bool onMouseEnter(Point p)
         {
             if (buttonState == CurrentState.Hover) return false;
 
@@ -83,7 +83,7 @@ namespace PixelBuilder.Components
             return true;
         }
 
-        public override bool onMouseLeave()
+        public override bool onMouseLeave(Point p)
         {
             if (buttonState == CurrentState.Up) return false;
 
