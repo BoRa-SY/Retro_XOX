@@ -14,6 +14,10 @@ namespace XOXClient
     {
         public static Bitmap XOXLogo;
 
+        public static class Texts
+        {
+            public static Bitmap EnterRoomCode;
+        }
         public static class Colors
         {
             public static readonly Color backgroundColor = Color.FromArgb(0, 188, 212);
@@ -23,22 +27,29 @@ namespace XOXClient
         {
             public static Bitmap btn_Create;
             public static Bitmap btn_Create__Hover;
+            public static Bitmap btn_Create__Click;
 
             public static Bitmap btn_Join;
             public static Bitmap btn_Join__Hover;
+            public static Bitmap btn_Join__Click;
+
+            public static Bitmap btn_Back;
+            public static Bitmap btn_Back__Hover;
+            public static Bitmap btn_Back__Click;
 
         }
 
+        public static Dictionary<char, Bitmap> Chars;
 
 
         public static void Init()
         {
             XOXLogo = Resources.XOX_Logo;
 
+            initChars();
             initButtons();
+            initTexts();
 
-            Buttons.btn_Create.Save("1.png");
-            Buttons.btn_Create__Hover.Save("2.png");
             void initButtons()
             {
                 #region Large Buttons
@@ -50,6 +61,32 @@ namespace XOXClient
                 Buttons.btn_Create__Hover = largeButtonsTexture.getTextureByIndex(2);
                 Buttons.btn_Join__Hover = largeButtonsTexture.getTextureByIndex(3);
                 #endregion
+
+                #region Small Buttons
+                TextureFile smallButtonsTexture = new TextureFile(Resources.SmallButtons, 1, new Size(11,11));
+
+                Buttons.btn_Back = smallButtonsTexture.getTextureByIndex(0);
+                Buttons.btn_Back__Hover = smallButtonsTexture.getTextureByIndex(1);
+
+                #endregion
+            }
+
+            void initChars()
+            {
+                TextureFile charsTF = new TextureFile(Resources.chars, 26, new Size(5, 7));
+
+                string charsString = "abcdefghijklmnopqrstuvwxyz123456789";
+
+                Chars = new Dictionary<char, Bitmap>();
+                for(int i = 0; i < charsString.Length; i++)
+                {
+                    Chars.Add(charsString[i], charsTF.getTextureByIndex(i));
+                }
+            }
+
+            void initTexts()
+            {
+                Texts.EnterRoomCode = Resources.Text_EnterRoomCode;
             }
         }
 

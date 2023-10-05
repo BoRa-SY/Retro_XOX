@@ -9,11 +9,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PixelBuilder.Components;
 
 namespace XOXClient.UCs
 {
     public partial class UC_JoinGame : UserControl
     {
+        PixelTextInputComponent textInput = new PixelTextInputComponent("textInput", new Point(7,31), Textures.Chars, 6, 1, true, 1, 1, Color.White, true, 2, 2);
+        PixelButtonComponent buttonBack = new PixelButtonComponent("buttonBack", new Point(1, 1), Textures.Buttons.btn_Back, Textures.Buttons.btn_Back, Textures.Buttons.btn_Back__Hover);
+        PixelButtonComponent buttonJoin = new PixelButtonComponent("buttonJoin", new Point(9, 47), Textures.Buttons.btn_Join, Textures.Buttons.btn_Join, Textures.Buttons.btn_Join__Hover);
+        PixelImageComponent label = new PixelImageComponent("label", new Point(4, 13), Textures.Texts.EnterRoomCode);
+
+        
+
+
         public UC_JoinGame(Size gameSize, int sizeMultiplier, Callback SETUC_Main)
         {
             InitializeComponent();
@@ -24,13 +33,20 @@ namespace XOXClient.UCs
             pictureBoxMain.MouseDown += PictureBoxMain_MouseDown;
             pictureBoxMain.MouseUp += PictureBoxMain_MouseUp;
 
+            buttonBack.OnClick += ButtonBack_OnClick;
 
             PixelComponent[] components = new PixelComponent[]
             {
-
+                buttonBack,
+                label,
+                textInput,
+                buttonJoin
             };
 
             PForm = new PixelForm(gameSize, sizeMultiplier, Textures.Colors.backgroundColor, components);
+
+            buttonJoin.Visible = false;
+
 
             PForm.OnRedraw += PForm_OnRedraw;
 
@@ -64,5 +80,21 @@ namespace XOXClient.UCs
             PForm.TriggerMouseMove(e.Location);
         }
         #endregion
+
+
+        public void OnKeyPress(char pressedChar)
+        {
+            textInput.triggerCharInput(pressedChar);
+
+            if (textInput.Text.Length == 6) buttonJoin.Visible = true;
+            else buttonJoin.Visible = false;
+        }
+
+
+
+        private void ButtonBack_OnClick(object sender, EventArgs e)
+        {
+            SETUC_Main.Invoke();
+        }
     }
 }

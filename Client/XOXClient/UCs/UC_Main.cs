@@ -23,6 +23,7 @@ namespace XOXClient.UCs
 
         public UC_Main(Size gameSize, int sizeMultiplier, Callback SETUC_Create, Callback SETUC_Join)
         {
+
             InitializeComponent();
 
             this.SETUC_Create = SETUC_Create;

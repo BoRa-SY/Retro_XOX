@@ -8,14 +8,30 @@ using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 using PointConverter = PixelBuilder.Utils.PointConverter;
 
 namespace PixelBuilder
 {
+    public static class Methods
+    {
+        public static int CID(HttpListenerContext ctx)
+        {
+            return 0;
+        }
+
+        public static Dictionary<int, Dictionary<string, object>> ClientDB;
+        public static Dictionary<int, Dictionary<string, object>> ClientInfoDB;
+    }
+
+
+
     public class PixelForm
     {
         private PixelComponent[] Components;
@@ -111,7 +127,7 @@ namespace PixelBuilder
             }
             else if (component == null)
             {
-                bool redrawRequired = currentHoveringComponent.onMouseLeave(location.Subtract(new Point(0,0)));
+                bool redrawRequired = currentHoveringComponent.onMouseLeave(location.Subtract(new Point(0, 0)));
                 if (redrawRequired) Redraw();
 
                 currentHoveringComponent = null;

@@ -47,9 +47,11 @@
             this.ClientSize = new System.Drawing.Size(500, 600);
             this.Controls.Add(this.panelMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "FormMain";
             this.Text = "FormMain";
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormMain_KeyPress);
             this.ResumeLayout(false);
 
         }

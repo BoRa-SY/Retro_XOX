@@ -41,9 +41,11 @@ namespace PixelBuilder.Components
 
         private SolidBrush underlineBrush;
 
+        private bool seperateChars;
+        private int seperateAfterIndex;
+        private int gapWidth;
 
-
-        public PixelTextInputComponent(string name, Point location, Dictionary<char, Bitmap> charMap, int textLength, int charPadding, bool underline, int underlineOffset, int underlineThickness, Color underlineColor, string text = "")
+        public PixelTextInputComponent(string name, Point location, Dictionary<char, Bitmap> charMap, int textLength, int charPadding, bool underline, int underlineOffset, int underlineThickness, Color underlineColor, bool seperateChars = false, int seperateAfterIndex = 0, int gapWidth = 0, string text = "")
         {
             Size baseSize = charMap.Count != 0 ? charMap.First().Value.Size : throw new ArgumentException("charMap length 0");
             
@@ -68,10 +70,14 @@ namespace PixelBuilder.Components
 
             this.underlineBrush = new SolidBrush(underlineColor);
 
+            this.seperateChars = seperateChars;
+            this.seperateAfterIndex = seperateAfterIndex;
+            this.gapWidth = gapWidth;
 
 
             if(text.Length <= textLength)
             {
+
                 for (int i = 0; i < text.Length; i++)
                 {
                     if (!charMap.ContainsKey(text[i])) return;
@@ -85,25 +91,21 @@ namespace PixelBuilder.Components
         {
             if(underline)
             {
-                for (int i = 0; i < (Text.Length == 6 ? 6 : Text.Length + 1); i++)
-                {
-                    drawUnderline(i);
-                }
-
-                /*
                 for(int i = 0; i < textLength; i++)
                 {
                     drawUnderline(i);
                 }
-                */
+
             }
 
-            for(int i = 0; i < Text.Length; i++)
+            
+            for (int i = 0; i < Text.Length; i++)
             {
                 char c = Text[i];
                 if (!charMap.ContainsKey(c)) continue;
                 drawChar(charMap[c], i);
             }
+            
 
 
 
@@ -112,12 +114,17 @@ namespace PixelBuilder.Components
                 int X = Location.X + (index * (charSize.Width + charPadding));
                 int Y = Location.Y + charSize.Height + underlineOffset;
 
+                if (seperateChars && seperateAfterIndex + 1 <= index) X += gapWidth - 1;
+
+
                 GRAPH.FillRectangle(underlineBrush, new Rectangle(new Point(X, Y), underlineSize));
             }
 
             void drawChar(Bitmap bmp, int index)
             {
                 int X = Location.X + (index * (charSize.Width + charPadding));
+
+                if (seperateChars && seperateAfterIndex + 1 <= index) X += gapWidth - 1;
 
                 GRAPH.DrawImage(bmp, new Rectangle(X, Location.Y, bmp.Size.Width, bmp.Size.Height), new Rectangle(new Point(0, 0), bmp.Size), GraphicsUnit.Pixel);
             }

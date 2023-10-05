@@ -55,6 +55,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTest.Designer.cs">
+      <DependentUpon>FormTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Textures.cs" />
@@ -84,6 +90,9 @@
     </Compile>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTest.resx">
+      <DependentUpon>FormTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -116,6 +125,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="UCs\TEMPLATE.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -127,13 +137,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\LargeButtons.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\XOX Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\chars.png" />
+    <None Include="Resources\LargeButtons.png" />
+    <None Include="Resources\Text_EnterRoomCode.png" />
+    <None Include="Resources\SmallButtons.png" />
     <Content Include="XOX Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

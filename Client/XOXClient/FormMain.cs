@@ -19,6 +19,7 @@ namespace XOXClient
         public FormMain()
         {
             InitializeComponent();
+
         }
 
         Size gridSize = new Size(50, 60);
@@ -35,8 +36,7 @@ namespace XOXClient
         {
             foreach(Control item in panelMain.Controls)
             {
-                if (item == UC) item.Visible = true;
-                else item.Visible = false;
+                item.Visible = item == UC;
             }
         }
         #endregion
@@ -76,9 +76,16 @@ namespace XOXClient
             panelMain.Controls.AddRange(new Control[] { UCMain, UCJoinGame, UCCreateGame, UCGame });
 
             setUCVisible(UCMain);
+
         }
 
-
-
+        private void FormMain_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (UCJoinGame.Visible)
+            {
+                UCJoinGame.OnKeyPress(e.KeyChar);
+                e.Handled = true;
+            }
+        }
     }
 }
