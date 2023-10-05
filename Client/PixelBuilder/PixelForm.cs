@@ -111,7 +111,7 @@ namespace PixelBuilder
             }
             else if (component == null)
             {
-                bool redrawRequired = currentHoveringComponent.onMouseLeave(location.Subtract(component.Location));
+                bool redrawRequired = currentHoveringComponent.onMouseLeave(location.Subtract(new Point(0,0)));
                 if (redrawRequired) Redraw();
 
                 currentHoveringComponent = null;

@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>XOX Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,21 +49,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormTest.cs">
+    <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTest.Designer.cs">
-      <DependentUpon>FormTest.cs</DependentUpon>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormTest.resx">
-      <DependentUpon>FormTest.cs</DependentUpon>
+    <Compile Include="Textures.cs" />
+    <Compile Include="UCs\UC_CreateGame.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCs\UC_CreateGame.Designer.cs">
+      <DependentUpon>UC_CreateGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCs\UC_Game.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCs\UC_Game.Designer.cs">
+      <DependentUpon>UC_Game.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCs\UC_JoinGame.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCs\UC_JoinGame.Designer.cs">
+      <DependentUpon>UC_JoinGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCs\UC_Main.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCs\UC_Main.Designer.cs">
+      <DependentUpon>UC_Main.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCs\UC_CreateGame.resx">
+      <DependentUpon>UC_CreateGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCs\UC_Game.resx">
+      <DependentUpon>UC_Game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCs\UC_JoinGame.resx">
+      <DependentUpon>UC_JoinGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCs\UC_Main.resx">
+      <DependentUpon>UC_Main.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -87,25 +127,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\buttonDown.png" />
+    <None Include="Resources\LargeButtons.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\buttonHover.png" />
+    <None Include="Resources\XOX Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\chars.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\testsquare.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\O.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\X.png" />
+    <Content Include="XOX Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

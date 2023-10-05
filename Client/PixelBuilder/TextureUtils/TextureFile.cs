@@ -28,11 +28,22 @@ namespace PixelBuilder.TextureUtils
             int totalPixelOffset = index * textureSize.Width;
 
             int yindex = (totalPixelOffset / img.Width) * textureSize.Height;
-            int xindex = totalPixelOffset - (yindex * texturesPerRow);
+            int xindex = totalPixelOffset % img.Width;
 
             return getTextureByLocation(new Point(xindex, yindex));
         }
 
+        /*
+        public Bitmap getTextureByIndex(int index)
+        {
+            int totalPixelOffset = index * textureSize.Width;
+
+            int yindex = (totalPixelOffset / img.Width) * textureSize.Height;
+            int xindex = totalPixelOffset - (yindex * texturesPerRow);
+
+            return getTextureByLocation(new Point(xindex, yindex));
+        }
+        */
 
         private Bitmap getTextureByLocation(Point location)
         {
