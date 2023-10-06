@@ -57,9 +57,13 @@ namespace XOXClient
 
                 Buttons.btn_Create = largeButtonsTexture.getTextureByIndex(0);
                 Buttons.btn_Join = largeButtonsTexture.getTextureByIndex(1);
+
                 
                 Buttons.btn_Create__Hover = largeButtonsTexture.getTextureByIndex(2);
                 Buttons.btn_Join__Hover = largeButtonsTexture.getTextureByIndex(3);
+
+                Buttons.btn_Create__Click = Buttons.btn_Create;
+                Buttons.btn_Join__Click = Buttons.btn_Join;
                 #endregion
 
                 #region Small Buttons
@@ -67,6 +71,7 @@ namespace XOXClient
 
                 Buttons.btn_Back = smallButtonsTexture.getTextureByIndex(0);
                 Buttons.btn_Back__Hover = smallButtonsTexture.getTextureByIndex(1);
+                Buttons.btn_Back__Click = Buttons.btn_Back;
 
                 #endregion
             }
