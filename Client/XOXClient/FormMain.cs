@@ -65,7 +65,7 @@ namespace XOXClient
 
             UCMain = new UC_Main(gridSize, sizeMultiplier, CB_SetToCreateGame, CB_SetToJoinGame);
             UCJoinGame = new UC_JoinGame(gridSize, sizeMultiplier, CB_SetToMainPage);
-            UCCreateGame = new UC_CreateGame();
+            UCCreateGame = new UC_CreateGame(gridSize, sizeMultiplier, CB_SetToMainPage);
             UCGame = new UC_Game(gridSize, sizeMultiplier);
 
             UCMain.Size = panelMain.Size;

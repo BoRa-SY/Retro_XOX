@@ -57,7 +57,7 @@ namespace XOXClient
 
                 Buttons.btn_Create = largeButtonsTexture.getTextureByIndex(0);
                 Buttons.btn_Join = largeButtonsTexture.getTextureByIndex(1);
-
+                
                 Buttons.btn_Create__Hover = largeButtonsTexture.getTextureByIndex(2);
                 Buttons.btn_Join__Hover = largeButtonsTexture.getTextureByIndex(3);
                 #endregion
