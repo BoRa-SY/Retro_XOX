@@ -17,6 +17,7 @@ namespace XOXClient
         public static class Texts
         {
             public static Bitmap EnterRoomCode;
+            public static Bitmap ShareRoomCode;
         }
         public static class Colors
         {
@@ -92,6 +93,7 @@ namespace XOXClient
             void initTexts()
             {
                 Texts.EnterRoomCode = Resources.Text_EnterRoomCode;
+                Texts.ShareRoomCode = Resources.Text_ShareRoomCode;
             }
         }
 

@@ -103,6 +103,16 @@ namespace XOXClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Text_ShareRoomCode {
+            get {
+                object obj = ResourceManager.GetObject("Text_ShareRoomCode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap XOX_Logo {
             get {
                 object obj = ResourceManager.GetObject("XOX_Logo", resourceCulture);

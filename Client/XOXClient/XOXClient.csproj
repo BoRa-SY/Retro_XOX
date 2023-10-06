@@ -144,6 +144,7 @@
     <None Include="Resources\LargeButtons.png" />
     <None Include="Resources\Text_EnterRoomCode.png" />
     <None Include="Resources\SmallButtons.png" />
+    <None Include="Resources\Text_ShareRoomCode.png" />
     <Content Include="XOX Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

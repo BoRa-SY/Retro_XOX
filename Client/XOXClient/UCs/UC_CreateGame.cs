@@ -17,6 +17,7 @@ namespace XOXClient.UCs
     public partial class UC_CreateGame : UserControl
     {
         PixelButtonComponent buttonBack = new PixelButtonComponent("buttonBack", new Point(1, 1), Textures.Buttons.btn_Back, Textures.Buttons.btn_Back__Click, Textures.Buttons.btn_Back__Hover);
+        PixelImageComponent label = new PixelImageComponent("label", new Point(4, 18), Textures.Texts.ShareRoomCode);
         PixelTextInputComponent textViewer = new PixelTextInputComponent("textViewer", new Point(7, 40), Textures.Chars, 6, 1, false, 0, 0, Color.White, true, 2, 2,"abcdef");
 
         public UC_CreateGame(Size gameSize, int sizeMultiplier, Callback SETUC_Main)
@@ -34,6 +35,7 @@ namespace XOXClient.UCs
             PixelComponent[] components = new PixelComponent[]
             {
                 buttonBack,
+                label,
                 textViewer
             };
 
