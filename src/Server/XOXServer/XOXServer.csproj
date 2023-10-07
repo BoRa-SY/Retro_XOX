@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PacketCommunication">
+      <HintPath>..\..\..\..\PacketCommunication\PacketCommunication\bin\Debug\PacketCommunication.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,6 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Packets\Packet_AbortCreateGame.cs" />
+    <Compile Include="Packets\Packet_CreateGame.cs" />
+    <Compile Include="Packets\Packet_CreateGameResponse.cs" />
+    <Compile Include="Packets\Packet_GameStartBroadcast.cs" />
+    <Compile Include="Packets\Packet_JoinGame.cs" />
+    <Compile Include="Packets\Packet_JoinGameResponse.cs" />
+    <Compile Include="Packets\Packet_MakeMove.cs" />
+    <Compile Include="Packets\Packet_NewMoveBroadcast.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
