@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{56DB8700-E9F4-41A5-9164-0CB8E3EA29D7}</ProjectGuid>
+    <ProjectGuid>{19B76A84-182A-41C5-B9C1-F88AF53230BC}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>XOXServer</RootNamespace>
     <AssemblyName>XOXServer</AssemblyName>
