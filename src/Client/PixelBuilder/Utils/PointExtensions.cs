@@ -28,5 +28,10 @@ namespace PixelBuilder.Utils
         {
             return new Point(p1.X - X, p1.Y - Y);
         }
+
+        public static bool IsPositive(this Point p)
+        {
+            return p.X > 0 && p.Y > 0;
+        }
     }
 }
