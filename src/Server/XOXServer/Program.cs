@@ -14,7 +14,6 @@ namespace XOXServer
         static async Task Main(string[] args)
         {
             string configFilePath = "config.json";
-            File.
         }
     }
 }
