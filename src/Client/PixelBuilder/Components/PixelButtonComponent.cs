@@ -14,6 +14,7 @@ namespace PixelBuilder.Components
         public Bitmap textureDown { get; private set; }
         public Bitmap textureHover { get; private set; }
 
+        public bool Enabled { get; set; } = true;
         internal CurrentState buttonState { get; set; } = CurrentState.Up;
 
 
@@ -35,7 +36,9 @@ namespace PixelBuilder.Components
 
         protected override void drawSelf(Graphics GRAPH)
         {
-            switch(buttonState)
+            if(!Enabled) GRAPH.DrawImage(texture, Location);
+            else
+            switch (buttonState)
             {
                 case CurrentState.Up:
                     GRAPH.DrawImage(texture, Location);
@@ -56,6 +59,8 @@ namespace PixelBuilder.Components
 
         public override bool onMouseDown(Point p)
         {
+            if (!Enabled) return false;
+
             if (buttonState == CurrentState.Down) return false;
 
             buttonState = CurrentState.Down;
@@ -67,6 +72,8 @@ namespace PixelBuilder.Components
 
         public override bool onMouseUp(Point p)
         {
+            if (!Enabled) return false;
+
             if (buttonState == CurrentState.Up) return false;
 
             buttonState = CurrentState.Up;
@@ -76,6 +83,8 @@ namespace PixelBuilder.Components
 
         public override bool onMouseEnter(Point p)
         {
+            if (!Enabled) return false;
+
             if (buttonState == CurrentState.Hover) return false;
 
             buttonState = CurrentState.Hover;
@@ -85,6 +94,8 @@ namespace PixelBuilder.Components
 
         public override bool onMouseLeave(Point p)
         {
+            if (!Enabled) return false;
+
             if (buttonState == CurrentState.Up) return false;
 
             buttonState = CurrentState.Up;
