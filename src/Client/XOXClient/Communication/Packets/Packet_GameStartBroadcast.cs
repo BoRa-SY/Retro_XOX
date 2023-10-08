@@ -12,14 +12,25 @@ namespace XOXClient.Communication.Packets
         public override byte ID => 7;
         public override int Length => 1;
 
+        public Player player;
+
         protected override BasePacket fromByteArray(byte[] bytes)
         {
-            return new Packet_GameStartBroadcast();
+            return new Packet_GameStartBroadcast()
+            {
+                player = (Player)bytes[0].GetBits(7, 1)
+            };
         }
 
         public override byte[] ToByteArray()
         {
-            return new byte[] { PacketUtils.getFirstByteWithPacketID(ID, 3) };
+            return new byte[] { (byte)(PacketUtils.getFirstByteWithPacketID(ID, 3) | (int)player) };
+        }
+
+        public enum Player
+        {
+            X = 0b0,
+            O = 0b1
         }
     }
 }
