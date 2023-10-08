@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace PacketCommunication
 {
-    internal static class NetworkStreamUtils
+    internal class NewNSU
     {
-        public static async Task<BasePacket> ReadPacketAsync(NetworkStream stream, PacketCollection packets)
+        public async Task<BasePacket> ReadPacketAsync(NetworkStream stream, PacketCollection packets)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace PacketCommunication
 
         }
 
-        public static async Task SendPacketAsync(NetworkStream stream, BasePacket packet)
+        public async Task SendPacketAsync(NetworkStream stream, BasePacket packet)
         {
             byte[] bytes = packet.ToByteArray();
             await stream.WriteAsync(bytes, 0, bytes.Length);

@@ -5,33 +5,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XOXServer.Packets
+namespace XOXClient.Communication.Packets
 {
-    public class Packet_MakeMove : BasePacket
+    public class Packet_JoinGameResponse : BasePacket
     {
-        public override byte ID => 5;
+        public override byte ID => 4;
         public override int Length => 1;
 
-        public int CellIndex;
+        public RoomState roomState;
 
         protected override BasePacket fromByteArray(byte[] bytes)
         {
-            byte cellIndexByte = bytes[0].GetBits(3, 4);
-            return new Packet_MakeMove()
+            byte roomStateByte = bytes[0].GetBits(3, 2);
+
+            return new Packet_JoinGameResponse
             {
-                CellIndex = cellIndexByte
+                roomState = (RoomState)roomStateByte
             };
         }
 
         public override byte[] ToByteArray()
         {
-            if (CellIndex < 0 || CellIndex > 8) throw new Exception("Incorrect cell index");
-
             byte[] bytes = new byte[1];
             byte b1 = PacketUtils.getFirstByteWithPacketID(ID, 3);
-            b1 |= (byte)(CellIndex << 1);
+            b1 |= (byte)((int)roomState << 3);
             bytes[0] = b1;
             return bytes;
+        }
+
+        public enum RoomState
+        {
+            Success = 0b00, // 0
+            RoomFull = 0b01, // 1
+            IncorrectRoomCode = 0b10 // 2
         }
     }
 }

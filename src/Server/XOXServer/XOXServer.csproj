@@ -49,14 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Packets\Packet_AbortCreateGame.cs" />
-    <Compile Include="Packets\Packet_CreateGame.cs" />
-    <Compile Include="Packets\Packet_CreateGameResponse.cs" />
-    <Compile Include="Packets\Packet_GameStartBroadcast.cs" />
-    <Compile Include="Packets\Packet_JoinGame.cs" />
-    <Compile Include="Packets\Packet_JoinGameResponse.cs" />
-    <Compile Include="Packets\Packet_MakeMove.cs" />
-    <Compile Include="Packets\Packet_NewMoveBroadcast.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="GameManager\GameManager.cs" />
+    <Compile Include="Communication\Listener.cs" />
+    <Compile Include="Communication\Packets\Packet_AbortCreateGame.cs" />
+    <Compile Include="Communication\Packets\Packet_CreateGame.cs" />
+    <Compile Include="Communication\Packets\Packet_CreateGameResponse.cs" />
+    <Compile Include="Communication\Packets\Packet_GameStartBroadcast.cs" />
+    <Compile Include="Communication\Packets\Packet_JoinGame.cs" />
+    <Compile Include="Communication\Packets\Packet_JoinGameResponse.cs" />
+    <Compile Include="Communication\Packets\Packet_MakeMove.cs" />
+    <Compile Include="Communication\Packets\Packet_NewMoveBroadcast.cs" />
+    <Compile Include="GameManager\Models\Game.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -64,5 +68,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

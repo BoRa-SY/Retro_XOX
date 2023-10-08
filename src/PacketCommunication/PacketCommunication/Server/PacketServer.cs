@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PacketCommunication.Server
@@ -70,6 +71,7 @@ namespace PacketCommunication.Server
             Client cli = new Client(tcpClient, this);
             if (ClientConnected != null) ClientConnected(this, cli);
 
+
             try
             {
                 NetworkStream stream = tcpClient.GetStream();
@@ -80,16 +82,23 @@ namespace PacketCommunication.Server
 
                     if (incomingPacket == null) continue;
 
-                    if(PacketReceived != null) PacketReceived(this, new IncomingData(cli, incomingPacket));
+                    Console.WriteLine("Received Packet");
+
+
+                    try
+                    {
+                        if (PacketReceived != null) PacketReceived(this, new IncomingData(cli, incomingPacket));
+                    }
+                    catch (Exception) { }
 
                 }
 
             }
-            catch (IOException)
+            catch (IOException ex)
             {
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

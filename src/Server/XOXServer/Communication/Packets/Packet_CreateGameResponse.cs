@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XOXServer.Packets
+namespace XOXServer.Communication.Packets
 {
     public class Packet_CreateGameResponse : BasePacket
     {

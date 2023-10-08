@@ -45,6 +45,7 @@
     <Compile Include="Client\PacketClient.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="NetworkStreamUtils.cs" />
+    <Compile Include="NEWNSU.cs" />
     <Compile Include="PacketCollection.cs" />
     <Compile Include="PacketUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

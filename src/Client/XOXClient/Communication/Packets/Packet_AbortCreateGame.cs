@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XOXServer.Packets
+namespace XOXClient.Communication.Packets
 {
     public class Packet_AbortCreateGame : BasePacket
     {

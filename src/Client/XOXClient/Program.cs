@@ -17,7 +17,7 @@ namespace XOXClient
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Control.CheckForIllegalCrossThreadCalls = false;
-            Application.Run(new FormMain());
+            Application.Run(new FormTest());
         }
     }
 }

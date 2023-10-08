@@ -36,6 +36,9 @@
     <ApplicationIcon>XOX Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PacketCommunication">
+      <HintPath>..\..\PacketCommunication\PacketCommunication\bin\Debug\PacketCommunication.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +52,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Communication\Client.cs" />
+    <Compile Include="Communication\Packets\Packet_AbortCreateGame.cs" />
+    <Compile Include="Communication\Packets\Packet_CreateGame.cs" />
+    <Compile Include="Communication\Packets\Packet_CreateGameResponse.cs" />
+    <Compile Include="Communication\Packets\Packet_GameStartBroadcast.cs" />
+    <Compile Include="Communication\Packets\Packet_JoinGame.cs" />
+    <Compile Include="Communication\Packets\Packet_JoinGameResponse.cs" />
+    <Compile Include="Communication\Packets\Packet_MakeMove.cs" />
+    <Compile Include="Communication\Packets\Packet_NewMoveBroadcast.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>

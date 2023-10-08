@@ -23,6 +23,7 @@ namespace PacketCommunication.Client
         {
             this.EP = EP;
             this.client = new TcpClient();
+            this.packets = packets;
         }
 
         private PacketCollection packets;
@@ -30,7 +31,8 @@ namespace PacketCommunication.Client
         public void Connect()
         {
             client.Connect(EP);
-            
+
+            _ = HandleIncomingAsync();
         }
 
 
@@ -53,15 +55,19 @@ namespace PacketCommunication.Client
 
                     if (packet == null) continue;
 
-                    if (PacketReceived != null) PacketReceived(this, packet);
+                    try
+                    {
+                        if (PacketReceived != null) PacketReceived(this, packet);
+                    }
+                    catch (Exception) { }
                 }
 
             }
-            catch (IOException)
+            catch (IOException ex)
             {
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
