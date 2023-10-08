@@ -73,6 +73,16 @@ namespace XOXClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconXO {
+            get {
+                object obj = ResourceManager.GetObject("IconXO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LargeButtons {
             get {
                 object obj = ResourceManager.GetObject("LargeButtons", resourceCulture);
@@ -96,6 +106,16 @@ namespace XOXClient.Properties {
         internal static System.Drawing.Bitmap Text_EnterRoomCode {
             get {
                 object obj = ResourceManager.GetObject("Text_EnterRoomCode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Text_NextPlayer {
+            get {
+                object obj = ResourceManager.GetObject("Text_NextPlayer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
