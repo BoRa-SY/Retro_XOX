@@ -9,11 +9,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PixelBuilder.Components;
 
 namespace XOXClient.UCs
 {
     public partial class UC_Game : UserControl
     {
+        PixelXOXGridComponent XOXGrid = new PixelXOXGridComponent("xoxgrid", new Point(11, 2), Textures.XO.GridX, Textures.XO.GridO, Color.White);
+        PixelImageComponent labelNextPlayer = new PixelImageComponent("labelNextPlayer", new Point(8, 33), Textures.Texts.NextPlayer);
+
+        PixelImageComponent nextPlayerX = new PixelImageComponent("nextPlayerX", new Point(20, 49), Textures.XO.IconX);
+        PixelImageComponent nextPlayerO = new PixelImageComponent("nextPlayerO", new Point(20, 49), Textures.XO.IconO);
 
         public UC_Game(Size gameSize, int sizeMultiplier)
         {
@@ -23,19 +29,28 @@ namespace XOXClient.UCs
             pictureBoxMain.MouseDown += PictureBoxMain_MouseDown;
             pictureBoxMain.MouseUp += PictureBoxMain_MouseUp;
 
+            XOXGrid.OnCellClicked += XOXGrid_OnCellClicked;
 
             PixelComponent[] components = new PixelComponent[]
             {
-
+                XOXGrid,
+                labelNextPlayer,
+                nextPlayerX,
+                nextPlayerO
             };
 
             PForm = new PixelForm(gameSize, sizeMultiplier, Textures.Colors.backgroundColor, components);
+            nextPlayerO.Visible = false;
 
             PForm.OnRedraw += PForm_OnRedraw;
 
             PForm_OnRedraw(null, null);
         }
 
+        private void XOXGrid_OnCellClicked(object sender, int e)
+        {
+
+        }
 
         PixelForm PForm;
 
