@@ -157,6 +157,9 @@
     <None Include="Resources\Text_EnterRoomCode.png" />
     <None Include="Resources\SmallButtons.png" />
     <None Include="Resources\Text_ShareRoomCode.png" />
+    <None Include="Resources\IconXO.png" />
+    <None Include="Resources\Text_NextPlayer.png" />
+    <None Include="Resources\GridXO.png" />
     <Content Include="XOX Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

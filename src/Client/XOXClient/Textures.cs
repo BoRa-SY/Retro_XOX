@@ -18,6 +18,7 @@ namespace XOXClient
         {
             public static Bitmap EnterRoomCode;
             public static Bitmap ShareRoomCode;
+            public static Bitmap NextPlayer;
         }
         public static class Colors
         {
@@ -40,6 +41,15 @@ namespace XOXClient
 
         }
 
+        public static class XO
+        {
+            public static Bitmap GridX;
+            public static Bitmap GridO;
+
+            public static Bitmap IconX;
+            public static Bitmap IconO;
+        }
+
         public static Dictionary<char, Bitmap> Chars;
 
 
@@ -50,6 +60,7 @@ namespace XOXClient
             initChars();
             initButtons();
             initTexts();
+            initXO();
 
             void initButtons()
             {
@@ -94,6 +105,19 @@ namespace XOXClient
             {
                 Texts.EnterRoomCode = Resources.Text_EnterRoomCode;
                 Texts.ShareRoomCode = Resources.Text_ShareRoomCode;
+                Texts.NextPlayer = Resources.Text_NextPlayer;
+            }
+
+            void initXO()
+            {
+                TextureFile GridXOTF = new TextureFile(Resources.GridXO,2, new Size(8, 8));
+                TextureFile IconXOTF = new TextureFile(Resources.IconXO, 2, new Size(10,10));
+
+                XO.GridX = GridXOTF.getTextureByIndex(0);
+                XO.GridO = GridXOTF.getTextureByIndex(1);
+
+                XO.IconX = IconXOTF.getTextureByIndex(1);
+                XO.IconO = IconXOTF.getTextureByIndex(0);
             }
         }
 

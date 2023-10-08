@@ -73,6 +73,16 @@ namespace XOXClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GridXO {
+            get {
+                object obj = ResourceManager.GetObject("GridXO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconXO {
             get {
                 object obj = ResourceManager.GetObject("IconXO", resourceCulture);
