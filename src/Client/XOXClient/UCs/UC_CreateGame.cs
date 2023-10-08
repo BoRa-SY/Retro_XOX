@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using XOXClient;
 using PixelBuilder.Components;
+using XOXClient.Communication;
+using PacketCommunication;
+using XOXClient.Communication.Packets;
 
 namespace XOXClient.UCs
 {
@@ -18,7 +21,7 @@ namespace XOXClient.UCs
     {
         PixelButtonComponent buttonBack = new PixelButtonComponent("buttonBack", new Point(1, 1), Textures.Buttons.btn_Back, Textures.Buttons.btn_Back__Click, Textures.Buttons.btn_Back__Hover);
         PixelImageComponent label = new PixelImageComponent("label", new Point(4, 18), Textures.Texts.ShareRoomCode);
-        PixelTextInputComponent textViewer = new PixelTextInputComponent("textViewer", new Point(7, 40), Textures.Chars, 6, 1, false, 0, 0, Color.White, true, 2, 2,"abcdef");
+        PixelTextInputComponent roomCodeViewer = new PixelTextInputComponent("roomCodeViewer", new Point(7, 40), Textures.Chars, 6, 1, false, 0, 0, Color.White, true, 2, 2, "abcdef");
 
         public UC_CreateGame(Size gameSize, int sizeMultiplier, Callback SETUC_Main)
         {
@@ -36,7 +39,7 @@ namespace XOXClient.UCs
             {
                 buttonBack,
                 label,
-                textViewer
+                roomCodeViewer
             };
 
             PForm = new PixelForm(gameSize, sizeMultiplier, Textures.Colors.backgroundColor, components);
@@ -79,6 +82,21 @@ namespace XOXClient.UCs
         private void ButtonBack_OnClick(object sender, EventArgs e)
         {
             SETUC_Main.Invoke();
+        }
+
+        private async void UC_CreateGame_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                var resp = await Client.SendPacketAndWaitForResponse<Packet_CreateGameResponse>(new Packet_CreateGame(), 3);
+                if (resp == null) return;
+                else roomCodeViewer.Text = resp.RoomCode;
+            }
+            else
+            {
+                roomCodeViewer.Text = "";
+                await Client.SendPacket(new Packet_AbortCreateGame());
+            }
         }
     }
 

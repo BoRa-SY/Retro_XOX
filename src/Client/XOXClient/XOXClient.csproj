@@ -61,6 +61,7 @@
     <Compile Include="Communication\Packets\Packet_JoinGameResponse.cs" />
     <Compile Include="Communication\Packets\Packet_MakeMove.cs" />
     <Compile Include="Communication\Packets\Packet_NewMoveBroadcast.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>

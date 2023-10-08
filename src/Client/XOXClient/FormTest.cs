@@ -46,7 +46,7 @@ namespace XOXClient
         {
             Communication.Client.Connect("127.0.0.1", 1234);
 
-            Communication.Client.packetReceived += Client_packetReceived;
+           // Communication.Client.packetReceived += Client_packetReceived;
 
             buttonConnect.Enabled = false;
 

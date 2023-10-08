@@ -8,6 +8,8 @@ namespace XOXClient
 {
     internal static class Program
     {
+        public static FormMain formMain;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -17,7 +19,8 @@ namespace XOXClient
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Control.CheckForIllegalCrossThreadCalls = false;
-            Application.Run(new FormMain());
+            formMain = new FormMain();
+            Application.Run(formMain);
         }
     }
 }

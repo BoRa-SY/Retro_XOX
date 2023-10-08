@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using XOXClient.Communication.Packets;
+using XOXClient.UCs;
 
 namespace XOXClient.Communication
 {
@@ -31,17 +33,59 @@ namespace XOXClient.Communication
             client.Connect();
 
             client.PacketReceived += Client_PacketReceived;
+
         }
-        public static event EventHandler<BasePacket> packetReceived;
 
         private static void Client_PacketReceived(object sender, BasePacket e)
         {
-            if (packetReceived != null) packetReceived(sender, e);
+            if(e is Packet_GameStartBroadcast)
+            {
+                var packet = e as Packet_GameStartBroadcast;
+
+                Program.formMain.UCGame.currentPlayer = (UC_Game.Player)(int)packet.player;
+                Program.formMain.CB_SetToGame();
+            }
+            else if(e is Packet_NewMoveBroadcast)
+            {
+                var packet = e as Packet_NewMoveBroadcast;
+                Program.formMain.UCGame.NewMoveReceived(packet);
+            }
         }
 
-        public static void SendPacket(BasePacket packet)
+        public static async Task SendPacket(BasePacket packet)
         {
-            client.SendPacketAsync(packet);
+            await client.SendPacketAsync(packet);
+        }
+
+        public static async Task<DesiredResponseType> SendPacketAndWaitForResponse<DesiredResponseType>(BasePacket packet, int timeoutSeconds) where DesiredResponseType : BasePacket
+        {
+
+            client.SendPacketAsync(packet).Wait();
+
+            DesiredResponseType receivedPacket = null;
+
+
+            EventHandler<BasePacket> packetReceivedHandler = (sender, e) =>
+            {
+                if (e is DesiredResponseType) receivedPacket = (DesiredResponseType)e;
+            };
+
+            client.PacketReceived += packetReceivedHandler;
+
+            DateTime loopStart = DateTime.Now;
+
+            int timeoutMS = timeoutSeconds * 1000;
+            int timeLeft = timeoutMS;
+
+            while (receivedPacket == null && timeLeft > 0)
+            {
+                await Task.Delay(100);
+                timeLeft -= 100;
+            }
+
+            client.PacketReceived -= packetReceivedHandler;
+
+            return receivedPacket;
         }
     }
 }

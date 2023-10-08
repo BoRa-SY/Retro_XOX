@@ -67,6 +67,8 @@ namespace XOXServer.GameManager
                 await client.SendPacketAsync(resp);
                 
                 await game.SetPlayer2(client);
+
+                Console.WriteLine("Received join game to " + packet.RoomCode.ToUpperEN());
             }
         }
 
@@ -106,7 +108,7 @@ namespace XOXServer.GameManager
         }
         private static string generateRoomCode()
         {
-            const string allValidChars = "abcdefghijklmnopqrstuvwxyz123456789";
+            const string allValidChars = "123456789";
 
             string roomCode = "";
             do

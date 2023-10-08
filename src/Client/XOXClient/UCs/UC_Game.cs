@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PixelBuilder.Components;
+using XOXClient.Communication.Packets;
+using XOXClient.Communication;
 
 namespace XOXClient.UCs
 {
@@ -47,13 +49,7 @@ namespace XOXClient.UCs
             PForm_OnRedraw(null, null);
         }
 
-        private void XOXGrid_OnCellClicked(object sender, int e)
-        {
-
-        }
-
         PixelForm PForm;
-
 
         #region Essential Events
 
@@ -77,5 +73,40 @@ namespace XOXClient.UCs
             PForm.TriggerMouseMove(e.Location);
         }
         #endregion
+
+        public Player currentPlayer;
+
+        Player nextPlayer = Player.X;
+
+        public void NewMoveReceived(Packet_NewMoveBroadcast newMove)
+        {
+            XOXGrid.setCell(newMove.CellIndex, newMove.playerState == Packet_NewMoveBroadcast.PlayerState.X ? PixelXOXGridComponent.CellState.X : PixelXOXGridComponent.CellState.O);
+            nextPlayer = newMove.playerState == Packet_NewMoveBroadcast.PlayerState.X ? Player.O : Player.X;
+
+            if(nextPlayer == Player.X)
+            {
+                nextPlayerX.Visible = true;
+                nextPlayerO.Visible = false;
+            }
+            else
+            {
+                nextPlayerX.Visible = false;
+                nextPlayerO.Visible = true;
+
+            }
+        }
+
+        private async void XOXGrid_OnCellClicked(object sender, int e)
+        {
+            if (nextPlayer != currentPlayer) return;
+
+            await Client.SendPacket(new Packet_MakeMove() { CellIndex = e});
+        }
+
+        public enum Player
+        {
+            X = 0,
+            O = 1
+        }
     }
 }

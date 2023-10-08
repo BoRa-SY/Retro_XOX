@@ -47,6 +47,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pictureBoxMain);
             this.Name = "UC_CreateGame";
+            this.VisibleChanged += new System.EventHandler(this.UC_CreateGame_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
             this.ResumeLayout(false);
 

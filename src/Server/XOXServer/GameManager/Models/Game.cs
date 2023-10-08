@@ -32,11 +32,12 @@ namespace XOXServer.GameManager.Models
         public async Task SetPlayer2(Client client)
         {
             player2 = client;
-            var bc = new Packet_GameStartBroadcast();
 
             GameStarted = true;
 
-            await Broadcast(bc);
+
+            await player1.SendPacketAsync(new Packet_GameStartBroadcast() { player = Packet_GameStartBroadcast.Player.X });
+            await player2.SendPacketAsync(new Packet_GameStartBroadcast() { player = Packet_GameStartBroadcast.Player.O });
 
         }
 

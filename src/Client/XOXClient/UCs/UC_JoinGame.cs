@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PixelBuilder.Components;
+using XOXClient.Communication;
+using XOXClient.Communication.Packets;
 
 namespace XOXClient.UCs
 {
@@ -35,6 +37,8 @@ namespace XOXClient.UCs
 
             buttonBack.OnClick += ButtonBack_OnClick;
 
+            buttonJoin.OnClick += ButtonJoin_OnClick;
+
             PixelComponent[] components = new PixelComponent[]
             {
                 buttonBack,
@@ -51,6 +55,29 @@ namespace XOXClient.UCs
             PForm.OnRedraw += PForm_OnRedraw;
 
             PForm_OnRedraw(null, null);
+        }
+
+        private async void ButtonJoin_OnClick(object sender, EventArgs e)
+        {
+            buttonJoin.Enabled = false;
+
+            string roomCode = textInput.Text;
+
+            var response = await Client.SendPacketAndWaitForResponse<Packet_JoinGameResponse>(new Packet_JoinGame() { RoomCode = roomCode}, 3);
+            if(response == null)
+            {
+                MessageBox.Show("Timeout");
+                buttonJoin.Enabled = true;
+                return;
+            }
+
+            switch(response.roomState)
+            {
+                case Packet_JoinGameResponse.RoomState.RoomFull: MessageBox.Show("Room Full"); break;
+                case Packet_JoinGameResponse.RoomState.IncorrectRoomCode: MessageBox.Show("Incorrect Room Code"); break;
+            }
+
+            buttonJoin.Enabled = true;
         }
 
         Callback SETUC_Main;

@@ -20,6 +20,15 @@ namespace XOXClient
         {
             InitializeComponent();
 
+            try
+            {
+                Communication.Client.Connect("127.0.0.1", 1234);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Couldn't connect to the server. Sorry!\nError: " + ex.Message);
+                Environment.Exit(0);
+            }
         }
 
         Size gridSize = new Size(50, 60);
@@ -30,7 +39,7 @@ namespace XOXClient
 
         UC_JoinGame UCJoinGame;
         UC_CreateGame UCCreateGame;
-        UC_Game UCGame;
+        public UC_Game UCGame;
 
         private void setUCVisible(UserControl UC)
         {
@@ -55,6 +64,11 @@ namespace XOXClient
         private void CB_SetToCreateGame()
         {
             setUCVisible(UCCreateGame);
+        }
+
+        public void CB_SetToGame()
+        {
+            setUCVisible(UCGame);
         }
         #endregion
 
