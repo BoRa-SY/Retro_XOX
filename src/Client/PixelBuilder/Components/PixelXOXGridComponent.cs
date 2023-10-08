@@ -35,10 +35,10 @@ namespace PixelBuilder.Components
             this.cellSideLength = Ximg.Width;
 
             this.gridPen = new Pen(gridColor, 1);
-
+            this.Size = new Size((cellSideLength * 3 + 4), (cellSideLength * 3 + 4));
             calculateCellLocations();
 
-            setAllCells(CellState.X);
+            setAllCells(CellState.Empty);
         }
 
         private void calculateCellLocations()
@@ -135,9 +135,12 @@ namespace PixelBuilder.Components
             for(int i = 0; i < cells.Length; i++)
             {
                 Point cellStart = cellLocations[i];
+                Point cellEnd = cellStart.Add(cellSideLength,cellSideLength);
+                if(p.X >= cellStart.X && p.X <= cellEnd.X && p.Y >= cellStart.Y && p.Y <= cellEnd.Y)
+                {
+                    if (OnCellClicked != null) OnCellClicked(this, i);
+                }
             }
-
-
 
             return false;
         }
