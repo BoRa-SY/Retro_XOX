@@ -15,6 +15,12 @@ namespace XOXServer.GameManager
     {
         private static List<Game> games = new List<Game>();
 
+        public static void RemoveGame(Game game)
+        {
+            if (games.Contains(game)) games.Remove(game);
+        }
+
+
         public static async Task HandlePacket(BasePacket packet, Client client)
         {
             Type packetType = packet.GetType();

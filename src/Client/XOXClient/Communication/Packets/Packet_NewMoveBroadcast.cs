@@ -53,7 +53,8 @@ namespace XOXClient.Communication.Packets
         {
             None = 0b00, // 0
             XWon = 0b01, // 1
-            OWon = 0b10 // 2
+            OWon = 0b10, // 2
+            Tie = 0b11 // 3
         }
 
         public enum PlayerState

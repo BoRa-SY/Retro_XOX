@@ -76,23 +76,41 @@ namespace XOXClient.UCs
 
         public Player currentPlayer;
 
-        Player nextPlayer = Player.X;
+        Player? nextPlayer = Player.X;
 
         public void NewMoveReceived(Packet_NewMoveBroadcast newMove)
         {
             XOXGrid.setCell(newMove.CellIndex, newMove.playerState == Packet_NewMoveBroadcast.PlayerState.X ? PixelXOXGridComponent.CellState.X : PixelXOXGridComponent.CellState.O);
-            nextPlayer = newMove.playerState == Packet_NewMoveBroadcast.PlayerState.X ? Player.O : Player.X;
+            
+            if(newMove.winState != Packet_NewMoveBroadcast.WinState.None)
+            {
+                nextPlayer = null;
+
+                switch(newMove.winState)
+                {
+                    case Packet_NewMoveBroadcast.WinState.XWon: MessageBox.Show("X Won"); break;
+                    case Packet_NewMoveBroadcast.WinState.OWon: MessageBox.Show("O Won"); break;
+                    case Packet_NewMoveBroadcast.WinState.Tie: MessageBox.Show("Tie"); break;
+                }
+            }
+            else nextPlayer = newMove.playerState == Packet_NewMoveBroadcast.PlayerState.X ? Player.O : Player.X;
 
             if(nextPlayer == Player.X)
             {
                 nextPlayerX.Visible = true;
                 nextPlayerO.Visible = false;
             }
-            else
+            else if(nextPlayer == Player.O)
             {
                 nextPlayerX.Visible = false;
                 nextPlayerO.Visible = true;
 
+            }
+            else
+            {
+                nextPlayerX.Visible = false;
+                nextPlayerO.Visible = false;
+                labelNextPlayer.Visible = false;
             }
         }
 
