@@ -16,7 +16,12 @@ namespace XOXServer
 
         static async Task Main(string[] args)
         {
-            Communication.Listener.Start("127.0.0.1", 1234);
+            string ipPortFilePath = "ipport.txt";
+            if(!File.Exists(ipPortFilePath)) { Console.WriteLine("ipport.txt not found"); Console.ReadLine(); return; }
+
+            string[] ipPortPairs = File.ReadAllLines(ipPortFilePath);
+
+            Communication.Listener.Start(ipPortPairs[0], int.Parse(ipPortPairs[1]));
 
             await Task.Delay(-1);
         }
